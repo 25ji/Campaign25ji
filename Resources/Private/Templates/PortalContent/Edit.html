@@ -1,0 +1,48 @@
+<f:layout name="Default" />
+
+<f:section name="Title">Edit portal content "{portalContent.name}"</f:section>
+
+<f:section name="Content">
+	<f:form action="update" object="{portalContent}" objectName="portalContent">
+		<ol>
+			<li>
+				<label for="headline">Headline</label>
+				<f:form.textfield property="headline" id="headline" />
+			</li>
+		
+			<li>
+				<label for="subheadline">Subheadline</label>
+				<f:form.textfield property="subheadline" id="subheadline" />
+			</li>
+		
+			<li>
+				<label for="postDate">Post date</label>
+				<f:form.textfield type="datetime" value="{portalContent.postDate -> f:format.date(format: 'Y-m-d\TH:i:sP')}" property="postDate" id="postDate" />
+			</li>
+		
+			<li>
+				<label for="state">State</label>
+				<f:form.textfield property="state" id="state" />
+			</li>
+		
+			<li>
+				<label for="rawContent">Raw content</label>
+				<f:form.textfield property="rawContent" id="rawContent" />
+			</li>
+		
+			<li>
+				<label for="internalUser">Internal user</label>
+				<f:form.textfield property="internalUser" id="internalUser" />
+			</li>
+		
+			<li>
+				<label for="url">Url</label>
+				<f:form.textfield property="url" id="url" />
+			</li>
+		
+			<li>
+				<f:form.submit value="Update" />
+			</li>
+		</ol>
+	</f:form>
+</f:section>
