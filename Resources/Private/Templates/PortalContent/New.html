@@ -6,45 +6,40 @@
 	<p>Just fill out the following form to create a new portal content:</p>
 
 	<f:form action="create" objectName="newPortalContent">
-		<ol>
-			<li>
-				<label for="headline">Portal content</label>
-				<f:form.textfield property="headline" id="headline" />
-			</li>
-		
-			<li>
-				<label for="subheadline">Portal content</label>
-				<f:form.textfield property="subheadline" id="subheadline" />
-			</li>
-		
-			<li>
-				<label for="postDate">Portal content</label>
-				<f:form.textfield type="datetime" value="{f:format.date(date: 'now', format: 'Y-m-d\TH:i:sP')}" property="postDate" id="postDate" />
-			</li>
-		
-			<li>
-				<label for="state">Portal content</label>
-				<f:form.textfield property="state" id="state" />
-			</li>
-		
-			<li>
-				<label for="rawContent">Portal content</label>
-				<f:form.textfield property="rawContent" id="rawContent" />
-			</li>
-		
-			<li>
-				<label for="internalUser">Portal content</label>
-				<f:form.textfield property="internalUser" id="internalUser" />
-			</li>
-		
-			<li>
-				<label for="url">Portal content</label>
-				<f:form.textfield property="url" id="url" />
-			</li>
-		
-			<li>
-				<f:form.submit value="Create" />
-			</li>
-		</ol>
+		<fieldset>
+			 <div class="form-group">
+				<label for="headline">Headline</label>
+				<f:form.textfield class="form-control" property="headline" id="headline" />
+			</div>
+
+			 <div class="form-group">
+				<label for="subheadline">Subheadline</label>
+				<f:form.textfield class="form-control" property="subheadline" id="subheadline" />
+			</div>
+
+			 <div class="form-group">
+				<label for="postDate">Publishing Date</label>
+				<f:form.textfield class="form-control" type="datetime" value="{f:format.date(date: 'now', format: 'Y-m-d\TH:i:sP')}" property="postDate" id="postDate" />
+			</div>
+
+			 <div class="form-group">
+				<label for="state">Status</label>
+				<f:form.select class="form-control" property="state" id="state" options="{1: 'Online', 0: 'Offline'}" />
+			</div>
+
+			 <div class="form-group">
+				<label for="rawContent">Content</label>
+				<f:form.textfield class="form-control" property="rawContent" id="rawContent" />
+			</div>
+
+			 <div class="form-group">
+				<label for="url">Url</label>
+				<f:form.textfield class="form-control" property="url" id="url" />
+			</div>
+
+			 <div class="form-group">
+				<f:form.submit class="form-control" value="Create" />
+			</div>
+		</fieldset>
 	</f:form>
 </f:section>

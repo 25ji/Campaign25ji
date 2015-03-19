@@ -11,6 +11,8 @@ use TYPO3\Flow\Annotations as Flow;
  */
 class PortalContent extends AbstractContent {
 
+	const CONTENT_TYPE = 'portal';
+
 	/**
 	 * @var string
 	 */

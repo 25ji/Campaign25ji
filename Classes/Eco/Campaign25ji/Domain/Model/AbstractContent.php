@@ -13,6 +13,12 @@ use TYPO3\Flow\Object\ObjectManagerInterface;
  */
 abstract class AbstractContent {
 
+	const CONTENT_TYPE = 'abstract';
+
+	const STATE_ONLINE = 1;
+
+	const STATE_OFFLINE = 0;
+
 	/**
 	 * The post date. Either current date for internally created content or the imported date.
 	 *
@@ -63,6 +69,13 @@ abstract class AbstractContent {
 	}
 
 	/**
+	 * @return string
+	 */
+	public function getType() {
+		return static::CONTENT_TYPE;
+	}
+
+	/**
 	 * @return \DateTime
 	 */
 	public function getPostDate() {
@@ -77,14 +90,14 @@ abstract class AbstractContent {
 	}
 
 	/**
-	 * @return int
+	 * @return integer
 	 */
 	public function getState() {
 		return $this->state;
 	}
 
 	/**
-	 * @param int $state
+	 * @param integer $state
 	 */
 	public function setState($state) {
 		$this->state = $state;

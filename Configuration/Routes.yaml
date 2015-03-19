@@ -1,0 +1,6 @@
+-
+  name:  'home'
+  uriPattern: ''
+  defaults:
+    '@controller': 'PortalContent'
+    '@action':     'index'
