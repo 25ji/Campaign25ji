@@ -34,38 +34,12 @@
 	</div>
 
 	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-		<h2>Post new Content</h2>
-
-		<p>
-			Foo bla: Für das System wird ein einfaches Backend zur Verfühgung gestellt. Dieses Backend wird ber htaccess
-			geschützt - es besteht kein eigenes Rechte / Rollen Konzept oder Freigabemechanismen.
-		</p>
+		<h2>Post new Content from Twitter</h2>
 
 		<f:form action="create" objectName="newPortalContent" class="form-horizontal">
-			<f:form.hidden property="__type" value="\Eco\Campaign25ji\Domain\Model\PortalContent" />
+			<f:form.hidden property="__type" value="\Eco\Campaign25ji\Domain\Model\TwitterContent" />
 			<div class="form-group">
-				<label for="headline" class="col-sm-2 control-label">Headline<span class="mandatory">*</span></label>
-
-				<div class="col-sm-10">
-					<f:form.textfield property="headline" id="headline" class="form-control input-lg" />
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="subheadline" class="col-sm-2 control-label">Sub Headline</label>
-
-				<div class="col-sm-10">
-					<f:form.textfield property="subheadline" id="subheadline" class="form-control input-lg" />
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="rawContent" class="col-sm-2 control-label">Your Content<span class="mandatory">*</span>:</label>
-
-				<div class="col-sm-10">
-					<f:form.textarea class="form-control input-lg" property="rawContent" id="rawContent" />
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="url" class="col-sm-2 control-label">Url</label>
+				<label for="url" class="col-sm-2 control-label">Twitter Status URL</label>
 
 				<div class="col-sm-10">
 					<f:form.textfield class="form-control input-lg" property="url" id="url" />

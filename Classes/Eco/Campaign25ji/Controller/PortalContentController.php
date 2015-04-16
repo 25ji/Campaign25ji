@@ -6,11 +6,15 @@ namespace Eco\Campaign25ji\Controller;
  *                                                                        *
  *                                                                        */
 
+use Eco\Campaign25ji\Domain\Model\AbstractContent;
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Mvc\Controller\ActionController;
 use Eco\Campaign25ji\Domain\Model\PortalContent;
 
-class PortalContentController extends ActionController {
+/**
+ * Class PortalContentController
+ *
+ */
+class PortalContentController extends AbstractController {
 
 	/**
 	 * @Flow\Inject
@@ -22,6 +26,7 @@ class PortalContentController extends ActionController {
 	 * @return void
 	 */
 	public function indexAction() {
+		$this->view->assign('packery', TRUE);
 		$this->view->assign('portalContents', $this->portalContentRepository->findAll());
 	}
 
@@ -36,14 +41,31 @@ class PortalContentController extends ActionController {
 	/**
 	 * @return void
 	 */
+	public function selectTypeAction() {
+	}
+
+	public function initializeCreateAction() {
+		$this->arguments->getArgument('newPortalContent')->getPropertyMappingConfiguration()->setTypeConverterOption(\TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter::class, \TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_OVERRIDE_TARGET_TYPE_ALLOWED, TRUE);
+	}
+
+	/**
+	 * @return void
+	 */
 	public function newAction() {
 	}
 
 	/**
-	 * @param \Eco\Campaign25ji\Domain\Model\PortalContent $newPortalContent
 	 * @return void
 	 */
-	public function createAction(PortalContent $newPortalContent) {
+	public function newTwitterAction() {
+
+	}
+
+	/**
+	 * @param AbstractContent $newPortalContent
+	 * @return void
+	 */
+	public function createAction(AbstractContent $newPortalContent) {
 		$this->portalContentRepository->add($newPortalContent);
 		$this->addFlashMessage('Created a new portal content.');
 		$this->redirect('index');

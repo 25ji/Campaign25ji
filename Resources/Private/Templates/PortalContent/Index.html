@@ -3,23 +3,37 @@
 <f:section name="Title">A list of portal contents</f:section>
 
 <f:section name="Content">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 stamp pos-1">
+		<div class="bg-image fg-onLight" style="background-image: url(../../../Public/images/bg/emotion-01.jpg);">
+			<h1>HAPPY BIRTHDAY INTERNET.</h1>
+
+			<p>Dantis molent. Ehendaectus num ipicieturis es ut exerferum facius, tem re aut erciend isimet lat adit
+				facerspic te pro ommos voluptatquam qui niendanis veliquidis ame inimus volut quidis elento consere
+				entissimust, uta quassi cor restemquas modi dolorectur?</p>
+
+			<div class="join">
+				<f:link.action action="new"><i class="fa fa-arrow-circle-right"></i>Jetzt Mitmachen</f:link.action></div>
+		</div>
+	</div>
 	<f:if condition="{portalContents}">
 		<f:then>
-			<ul>
 				<f:for each="{portalContents}" as="portalContent">
-					<li>
-						<f:link.action action="show" arguments="{portalContent: portalContent}">{portalContent.name}</f:link.action>
-						<f:link.action action="edit" arguments="{portalContent: portalContent}">Edit</f:link.action>
-						<f:form action="delete" arguments="{portalContent: portalContent}">
-							<f:form.submit value="Delete" />
-						</f:form>
-					</li>
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 stamp pos-3">
+						<div class="bg-image no-pad fg-onLight" style="">
+							<a href="{portalContent.url}">
+								<div class="overlay bottom">
+									<f:if condition="{portalContent.headline}"><h2>{portalContent.headline}</h2></f:if>
+
+									<p class="subline">{portalContent.rawContent}</p>
+
+									<f:if condition="{portalContent.internalUser}">
+										<div class="via">{portalContent.internalUser.accounts.0.accountIdentifier}</div>
+									</f:if>
+								</div>
+							</a>
+						</div>
+					</div>
 				</f:for>
-			</ul>
 		</f:then>
-		<f:else>
-			<p>No portal contents created yet.</p>
-		</f:else>
 	</f:if>
-	<p><f:link.action action="new">Create a new portal content</f:link.action></p>
 </f:section>

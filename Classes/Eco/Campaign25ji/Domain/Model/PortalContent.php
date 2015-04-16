@@ -15,6 +15,7 @@ class PortalContent extends AbstractContent {
 
 	/**
 	 * @var string
+	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $headline;
 

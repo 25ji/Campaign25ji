@@ -4,3 +4,10 @@
   defaults:
     '@controller': 'PortalContent'
     '@action':     'index'
+
+-
+  name:  'basic'
+  uriPattern: '{@controller}/@action'
+  defaults:
+    '@controller': 'PortalContent'
+    '@action':     'index'

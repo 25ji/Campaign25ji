@@ -4,7 +4,8 @@
     "description": "Add description here",
     "require": {
         "typo3/flow": "*",
-        "typo3/media": "*"
+        "typo3/media": "*",
+        "typo3/party": "*"
     },
     "autoload": {
         "psr-0": {
