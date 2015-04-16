@@ -5,7 +5,8 @@
     "require": {
         "typo3/flow": "*",
         "typo3/media": "*",
-        "typo3/party": "*"
+        "typo3/party": "*",
+        "flowpack/twitter-api": "*"
     },
     "autoload": {
         "psr-0": {
