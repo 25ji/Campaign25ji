@@ -21,4 +21,12 @@ class StandardController extends AbstractController {
 
 	}
 
+	public function aboutAction() {
+
+	}
+
+	public function partnerAction() {
+
+	}
+
 }

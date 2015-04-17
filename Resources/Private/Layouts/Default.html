@@ -50,9 +50,13 @@
 
 				<div class="collapse navbar-collapse" id="eco-navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="/">25 Jahre Internet</a></li>
-						<li><a href="#">Die Aktion</a></li>
-						<li><a href="#">Die Partner</a></li>
+						<li><a href="/">25 Jahre Internet</a></li>
+						<li>
+							<f:link.action action="about" controller="Standard">Die Aktion</f:link.action>
+						</li>
+						<li>
+							<f:link.action action="partner" controller="Standard">Partner</f:link.action>
+						</li>
 						<li>
 						<f:if condition="{account}">
 							<f:then>
