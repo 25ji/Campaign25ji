@@ -26,7 +26,6 @@ class TwitterContent extends AbstractContent {
 	 */
 	public function setUrl($url) {
 		$tweet = $this->tweetRepository->findByUrl($url);
-
 		if ($tweet === NULL) {
 			throw new \InvalidArgumentException('The given url was not a valid twitter status URL.', 1428936820);
 		}

@@ -18,16 +18,16 @@ class PortalContentController extends AbstractController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \Eco\Campaign25ji\Domain\Repository\PortalContentRepository
+	 * @var \Eco\Campaign25ji\Domain\Repository\AbstractContentRepository
 	 */
-	protected $portalContentRepository;
+	protected $abstractContentRepository;
 
 	/**
 	 * @return void
 	 */
 	public function indexAction() {
 		$this->view->assign('packery', TRUE);
-		$this->view->assign('portalContents', $this->portalContentRepository->findAll());
+		$this->view->assign('portalContents', $this->abstractContentRepository->findAll());
 	}
 
 	/**
@@ -66,7 +66,8 @@ class PortalContentController extends AbstractController {
 	 * @return void
 	 */
 	public function createAction(AbstractContent $newPortalContent) {
-		$this->portalContentRepository->add($newPortalContent);
+		$newPortalContent->setPostDate(new \DateTime());
+		$this->abstractContentRepository->add($newPortalContent);
 		$this->addFlashMessage('Created a new portal content.');
 		$this->redirect('index');
 	}
@@ -84,7 +85,7 @@ class PortalContentController extends AbstractController {
 	 * @return void
 	 */
 	public function updateAction(PortalContent $portalContent) {
-		$this->portalContentRepository->update($portalContent);
+		$this->abstractContentRepository->update($portalContent);
 		$this->addFlashMessage('Updated the portal content.');
 		$this->redirect('index');
 	}
@@ -94,7 +95,7 @@ class PortalContentController extends AbstractController {
 	 * @return void
 	 */
 	public function deleteAction(PortalContent $portalContent) {
-		$this->portalContentRepository->remove($portalContent);
+		$this->abstractContentRepository->remove($portalContent);
 		$this->addFlashMessage('Deleted a portal content.');
 		$this->redirect('index');
 	}
