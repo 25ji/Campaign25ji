@@ -30,8 +30,17 @@ class PortalContentController extends AbstractController {
 		$this->view->assign('portalContents', $this->abstractContentRepository->findAll());
 	}
 
-	public function searchAction() {
-
+	/**
+	 * @param string $term
+	 * @return void
+	 */
+	public function searchAction($term) {
+		if (trim($term) === '') {
+			$this->redirect('index');
+		}
+		$this->view->assign('packery', TRUE);
+		$this->view->assign('term', $term);
+		$this->view->assign('portalContents', $this->abstractContentRepository->findBySearchTerm($term));
 	}
 
 	/**

@@ -50,6 +50,14 @@
 
 				<div class="collapse navbar-collapse" id="eco-navbar-collapse">
 					<ul class="nav navbar-nav">
+						<li>
+							<f:form method="GET" action="search" controller="PortalContent" package="Eco.Campaign25ji" class="navbar-form navbar-left" additionalAttributes="{role: 'search'}">
+								<div class="form-group">
+									<input class="form-control" placeholder="" type="text" name="term" value="{term}">
+								</div>
+								<button type="submit" class="btn btn-navbar-search glyphicon glyphicon-search" aria-hidden="true">&nbsp;</button>
+							</f:form>
+						</li>
 						<li><a href="/">25 Jahre Internet</a></li>
 						<li>
 							<f:link.action action="about" controller="Standard">Die Aktion</f:link.action>
