@@ -1,0 +1,30 @@
+#                                                                        #
+# Security policy for the TYPO3.Neos package                             #
+#                                                                        #
+
+privilegeTargets:
+
+  'TYPO3\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
+
+    'Eco.Campaign25ji:UserProfileController':
+      matcher: 'method(Eco\Campaign25ji\Controller\UserProfileController->(?!initialize).*Action())'
+
+    'Eco.Campaign25ji:ContentCreation':
+      matcher: 'method(Eco\Campaign25ji\Controller\PortalContentController->(selectType|new|newTwitter|create)Action())'
+
+    'Eco.Campaign25ji:ContentModification':
+      matcher: 'method(Eco\Campaign25ji\Controller\PortalContentController->(edit|update|delete)Action())'
+
+roles:
+  'Eco.Campaign25ji:User':
+    privileges:
+      -
+        privilegeTarget: 'Eco.Campaign25ji:UserProfileController'
+        permission: GRANT
+
+      -
+        privilegeTarget: 'Eco.Campaign25ji:ContentCreation'
+        permission: GRANT
+
+  'Flowpack.TwitterApi:AuthenticatedUser':
+    parentRoles: ['Eco.Campaign25ji:User']

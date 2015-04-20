@@ -1,0 +1,13 @@
+TYPO3:
+  Flow:
+    security:
+      authentication:
+        providers:
+          TwitterOAuthProvider:
+            entryPoint: 'WebRedirect'
+            entryPointOptions:
+              routeValues:
+                '@package':    'Eco.Campaign25ji'
+                '@controller': 'Standard'
+                '@action':     'welcome'
+                '@format':     'html'

@@ -4,9 +4,6 @@ namespace Eco\Campaign25ji\Controller;
 use Eco\Campaign25ji\Domain\Model\PortalUser;
 use Eco\Campaign25ji\Domain\Repository\PortalUserRepository;
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Mvc\Controller\ActionController;
-use TYPO3\Flow\Security\Context as SecurityContext;
-use TYPO3\Party\Domain\Service\PartyService;
 
 /**
  *
@@ -20,24 +17,13 @@ class UserProfileController extends AbstractController {
 	protected $portalUserRepository;
 
 	/**
-	 * @Flow\Inject
-	 * @var SecurityContext
 	 */
-	protected $securityContext;
-
-	/**
-	 * @Flow\Inject
-	 * @var PartyService
-	 */
-	protected $partyService;
-
-
 	public function indexAction() {
-		$account = $this->securityContext->getAccount();
+		$account = $this->getAccountOrRedirectToLogin();
 		$user = $this->partyService->getAssignedPartyOfAccount($account);
 		if ($user === NULL) {
 			$this->addFlashMessage('You need to add your account details.');
-			$this->forward('edit');
+			$this->redirect('edit');
 		}
 
 		$this->view->assignMultiple(array(
@@ -47,11 +33,13 @@ class UserProfileController extends AbstractController {
 	}
 
 	/**
-	 * @param PortalUser $user
 	 */
-	public function editAction(PortalUser $user = NULL) {
+	public function editAction() {
+		$account = $this->getAccountOrRedirectToLogin();
+		$user = $this->partyService->getAssignedPartyOfAccount($account);
 		if ($user === NULL) {
 			$user = new PortalUser();
+			$this->partyService->assignAccountToParty($account, $user);
 		}
 
 		$this->view->assign('user', $user);
@@ -61,13 +49,30 @@ class UserProfileController extends AbstractController {
 	 * @param PortalUser $user
 	 */
 	public function updateAction(PortalUser $user) {
-		if ($this->persistenceManager->isNewObject($user)) {
-			$this->portalUserRepository->add($user);
-			$user->addAccount($this->securityContext->getAccount());
-		} else {
-			$this->portalUserRepository->update($user);
+		$account = $this->getAccountOrRedirectToLogin();
+		$currentUser = $this->partyService->getAssignedPartyOfAccount($account);
+		if ($currentUser === NULL || $user === $currentUser) {
+			if ($this->persistenceManager->isNewObject($user)) {
+				$this->portalUserRepository->add($user);
+				$this->partyService->assignAccountToParty($account, $user);
+			} else {
+				$this->portalUserRepository->update($user);
+			}
 		}
-		$this->redirect('show');
+
+		$this->redirect('index');
+	}
+
+	/**
+	 * @return \TYPO3\Flow\Security\Account
+	 */
+	protected function getAccountOrRedirectToLogin() {
+		$account = $this->securityContext->getAccount();
+		if ($account === NULL) {
+			$this->redirect('welcome', 'Standard');
+		}
+
+		return $account;
 	}
 
 }

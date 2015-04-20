@@ -1,0 +1,31 @@
+{namespace media=TYPO3\Media\ViewHelpers}
+<h3>Welcome,</h3>
+<h4>{account.accountIdentifier}</h4>
+<f:if condition="{user.image}">
+	<!-- remove complete div, if no image available (different css)  -->
+	<div class="user_image thumbnail">
+		<media:image asset="{user.image}" alt="{account.identifier}" />
+	</div>
+</f:if>
+<!--
+<div class="user_description">
+	<p>
+		<span class="label label-info">Name:</span>
+		<span>Mein Vorname und mein Nachname</span>
+	</p>
+
+	<p>
+		<span class="label label-info">Email:</span>
+		<span>fokuhilamioliba@kamasutra-nikamishi.co.uk</span>
+	</p>
+
+	<p>
+		<span class="label label-info">State:</span>
+		<span>Sponsor</span>
+	</p>
+</div>
+-->
+<div class="clearfix"></div>
+<p>
+	Sonme more Content to show or instruction or whatever you want
+</p>
