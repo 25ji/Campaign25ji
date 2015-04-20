@@ -18,21 +18,7 @@
 	<f:if condition="{portalContents}">
 		<f:then>
 				<f:for each="{portalContents}" as="portalContent">
-					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 stamp pos-3">
-						<div class="bg-image no-pad fg-onLight" style="">
-							<a href="{portalContent.url}">
-								<div class="overlay bottom">
-									<f:if condition="{portalContent.headline}"><h2>{portalContent.headline}</h2></f:if>
-
-									<p class="subline">{portalContent.rawContent}</p>
-
-									<f:if condition="{portalContent.internalUser}">
-										<div class="via">{portalContent.internalUser.accounts.0.accountIdentifier}</div>
-									</f:if>
-								</div>
-							</a>
-						</div>
-					</div>
+					<f:render partial="ContentTile" arguments="{portalContent: portalContent}" />
 				</f:for>
 		</f:then>
 	</f:if>

@@ -30,6 +30,10 @@ class PortalContentController extends AbstractController {
 		$this->view->assign('portalContents', $this->abstractContentRepository->findAll());
 	}
 
+	public function searchAction() {
+
+	}
+
 	/**
 	 * @param \Eco\Campaign25ji\Domain\Model\PortalContent $portalContent
 	 * @return void

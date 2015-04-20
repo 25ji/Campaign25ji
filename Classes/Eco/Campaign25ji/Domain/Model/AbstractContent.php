@@ -4,6 +4,7 @@ namespace Eco\Campaign25ji\Domain\Model;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Object\ObjectManagerInterface;
+use TYPO3\Media\Domain\Model\Image;
 
 /**
  * Abstract container for any kind of content.
@@ -56,6 +57,13 @@ abstract class AbstractContent {
 	 * @var string
 	 */
 	protected $url;
+
+	/**
+	 * @var Image
+	 * @ORM\ManyToOne(cascade={"PERSIST"})
+	 * @ORM\JoinColumn(nullable=true)
+	 */
+	protected $image;
 
 	/**
 	 * Initialize the object after creation.
@@ -143,5 +151,19 @@ abstract class AbstractContent {
 	 */
 	public function setUrl($url) {
 		$this->url = $url;
+	}
+
+	/**
+	 * @return Image
+	 */
+	public function getImage() {
+		return $this->image;
+	}
+
+	/**
+	 * @param Image $image
+	 */
+	public function setImage(Image $image = NULL) {
+		$this->image = $image;
 	}
 }

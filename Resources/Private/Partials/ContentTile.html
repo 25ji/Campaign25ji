@@ -1,0 +1,34 @@
+<f:if condition="{portalContent.image}">
+	<f:then>
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 item">
+			<div class="bg-image no-pad fg-onLight" style="background-image: url({typo3.media:uri.image(asset: portalContent.image)});">
+				{f:if(condition: portalContent.url, then: '<a href="{portalContent.url}">')}
+					<div class="overlay bottom">
+						<f:if condition="{portalContent.headline}"><h2>{portalContent.headline}</h2></f:if>
+
+						<p class="subline">{portalContent.rawContent}</p>
+
+						<f:if condition="{portalContent.internalUser}">
+							<div class="via">{portalContent.internalUser.accounts.0.accountIdentifier}</div>
+						</f:if>
+					</div>
+				{f:if(condition: portalContent.url, then: '</a>')}
+			</div>
+		</div>
+	</f:then>
+	<f:else>
+		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 item">
+			<div class="bg-image emotion-01 fg-onLight">
+				<a href="{portalContent.url}">
+					<h3>{portalContent.headline}</h3>
+				</a>
+
+				<f:if condition="{portalContent.subheadline}"><p class="subline">{portalContent.subheadline}</p></f:if>
+
+				<p>{portalContent.rawContent}</p>
+
+			</div>
+		</div>
+	</f:else>
+</f:if>
+

@@ -41,13 +41,13 @@
 			geschützt - es besteht kein eigenes Rechte / Rollen Konzept oder Freigabemechanismen.
 		</p>
 
-		<f:form action="create" objectName="newPortalContent" class="form-horizontal">
+		<f:form action="create" objectName="newPortalContent" class="form-horizontal" enctype="multipart/form-data">
 			<f:form.hidden property="__type" value="\Eco\Campaign25ji\Domain\Model\PortalContent" />
 			<div class="form-group">
 				<label for="headline" class="col-sm-2 control-label">Headline<span class="mandatory">*</span></label>
 
 				<div class="col-sm-10">
-					<f:form.textfield property="headline" id="headline" class="form-control input-lg" />
+					<f:form.textfield property="headline" id="headline" additionalAttributes="{required: 'required'}" class="form-control input-lg" />
 				</div>
 			</div>
 			<div class="form-group">
@@ -61,7 +61,7 @@
 				<label for="rawContent" class="col-sm-2 control-label">Your Content<span class="mandatory">*</span>:</label>
 
 				<div class="col-sm-10">
-					<f:form.textarea class="form-control input-lg" property="rawContent" id="rawContent" />
+					<f:form.textarea class="form-control input-lg" property="rawContent" id="rawContent" additionalAttributes="{required: 'required'}" />
 				</div>
 			</div>
 			<div class="form-group">
@@ -69,6 +69,13 @@
 
 				<div class="col-sm-10">
 					<f:form.textfield class="form-control input-lg" property="url" id="url" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="image" class="col-sm-2 control-label">Image</label>
+
+				<div class="col-sm-10">
+					<f:form.upload class="form-control input-lg" property="image.resource" id="image" />
 				</div>
 			</div>
 			<div class="form-group">
