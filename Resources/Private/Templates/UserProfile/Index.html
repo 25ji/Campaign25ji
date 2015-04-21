@@ -6,7 +6,11 @@
 <f:section name="Content">
 	<h3>{account.accountidentifier} <span><f:link.action action="edit">bearbeiten</f:link.action></span></h3>
 
-	<figure><media:image asset="{user.image}" alt="{account.identifier}" /></figure>
+	<f:if condition="{user.image}">
+		<figure>
+			<media:image asset="{user.image}" alt="{account.identifier}" />
+		</figure>
+	</f:if>
 
 
 </f:section>

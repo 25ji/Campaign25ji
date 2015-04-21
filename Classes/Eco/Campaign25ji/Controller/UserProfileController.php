@@ -37,10 +37,6 @@ class UserProfileController extends AbstractController {
 	public function editAction() {
 		$account = $this->getAccountOrRedirectToLogin();
 		$user = $this->partyService->getAssignedPartyOfAccount($account);
-		if ($user === NULL) {
-			$user = new PortalUser();
-			$this->partyService->assignAccountToParty($account, $user);
-		}
 
 		$this->view->assign('user', $user);
 	}
@@ -48,8 +44,11 @@ class UserProfileController extends AbstractController {
 	/**
 	 * @param PortalUser $user
 	 */
-	public function updateAction(PortalUser $user) {
+	public function updateAction(PortalUser $user = NULL) {
 		$account = $this->getAccountOrRedirectToLogin();
+		if ($user === NULL) {
+			$user = new PortalUser();
+		}
 		$currentUser = $this->partyService->getAssignedPartyOfAccount($account);
 		if ($currentUser === NULL || $user === $currentUser) {
 			if ($this->persistenceManager->isNewObject($user)) {
