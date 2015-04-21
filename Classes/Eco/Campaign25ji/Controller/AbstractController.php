@@ -44,7 +44,7 @@ abstract class AbstractController extends ActionController {
 	public function initializeAction() {
 		$this->setAccountAndUser();
 
-		if ($this->account !== NULL && $this->user === NULL) {
+		if ($this->account !== NULL && $this->user === NULL && ($this->actionMethodName !== 'edit' || !($this instanceof UserProfileController))) {
 			$this->redirect('edit', 'UserProfile');
 		}
 	}
