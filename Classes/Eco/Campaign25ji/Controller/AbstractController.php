@@ -25,15 +25,27 @@ abstract class AbstractController extends ActionController {
 	protected $partyService;
 
 	/**
+	 * If logged in the current account is available here.
+	 *
+	 * @var \TYPO3\Flow\Security\Account
+	 */
+	protected $account;
+
+	/**
+	 * If logged in the current user is available here.
+	 *
+	 * @var \Eco\Campaign25ji\Domain\Model\PortalUser
+	 */
+	protected $user;
+
+	/**
 	 *
 	 */
 	public function initializeAction() {
-		$account = $this->securityContext->getAccount();
-		if ($account !== NULL) {
-			$user = $this->partyService->getAssignedPartyOfAccount($account);
-			if ($user === NULL) {
-				$this->redirect('edit', 'UserProfile');
-			}
+		$this->setAccountAndUser();
+
+		if ($this->account !== NULL && $this->user === NULL) {
+			$this->redirect('edit', 'UserProfile');
 		}
 	}
 
@@ -42,11 +54,18 @@ abstract class AbstractController extends ActionController {
 	 */
 	protected function initializeView(ViewInterface $view) {
 		parent::initializeView($view);
-		$account = $this->securityContext->getAccount();
-		$view->assign('account', $account);
-		if ($account !== NULL) {
-			$user = $this->partyService->getAssignedPartyOfAccount($account);
-			$view->assign('user', $user);
+		$this->setAccountAndUser();
+		$view->assign('account', $this->account);
+		$view->assign('user', $this->user);
+	}
+
+	protected function setAccountAndUser() {
+		if ($this->account === NULL) {
+			$this->account = $this->securityContext->getAccount();
+		}
+
+		if ($this->account !== NULL) {
+			$this->user = $this->partyService->getAssignedPartyOfAccount($this->account);
 		}
 	}
 }

@@ -13,12 +13,14 @@
 						</f:if>
 					</div>
 				{f:if(condition: portalContent.url, then: '</a>')}
+
+				<f:render partial="ContentTileViaFooter" arguments="{portalContent: portalContent}" />
 			</div>
 		</div>
 	</f:then>
 	<f:else>
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 item">
-			<div class="bg-image emotion-01 fg-onLight">
+			<div class="{f:if(condition: '{portalContent.type} == "twitter"', then: 'bg-primary fg-onDark', else: 'emotion-01 fg-onLight')}">
 				<a href="{portalContent.url}">
 					<h3>{portalContent.headline}</h3>
 				</a>
@@ -27,8 +29,8 @@
 
 				<p>{portalContent.rawContent}</p>
 
+				<f:render partial="ContentTileViaFooter" arguments="{portalContent: portalContent}" />
 			</div>
 		</div>
 	</f:else>
 </f:if>
-

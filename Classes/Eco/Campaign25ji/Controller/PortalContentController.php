@@ -80,6 +80,7 @@ class PortalContentController extends AbstractController {
 	 */
 	public function createAction(AbstractContent $newPortalContent) {
 		$newPortalContent->setPostDate(new \DateTime());
+		$newPortalContent->setInternalUser($this->user);
 		$this->abstractContentRepository->add($newPortalContent);
 		$this->addFlashMessage('Created a new portal content.');
 		$this->redirect('index');
