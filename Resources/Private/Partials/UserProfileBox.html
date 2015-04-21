@@ -1,6 +1,7 @@
 {namespace media=TYPO3\Media\ViewHelpers}
 <h3>Welcome,</h3>
-<h4>{account.accountIdentifier}</h4>
+<h4>{account.accountIdentifier}
+<p><f:link.action action="edit" controller="UserProfile">bearbeiten</f:link.action></p>
 <f:if condition="{user.image}">
 	<!-- remove complete div, if no image available (different css)  -->
 	<div class="user_image thumbnail">
