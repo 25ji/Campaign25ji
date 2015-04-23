@@ -32,6 +32,7 @@ class AbstractContentRepository extends \TYPO3\Flow\Persistence\Doctrine\Reposit
 		foreach ($termParts as $key => &$termPart) {
 			$termPart = '%' . trim($termPart) . '%';
 			$constraints[] = $query->logicalOr(
+				$query->like('headline', $termPart, FALSE),
 				$query->like('rawContent', $termPart, FALSE),
 				$query->like('url', $termPart, FALSE)
 			);

@@ -35,6 +35,12 @@ abstract class AbstractContent {
 	protected $state = 1;
 
 	/**
+	 * @var string
+	 * @ORM\Column(nullable=true)
+	 */
+	protected $headline;
+
+	/**
 	 * The raw content for this post.
 	 *
 	 * @var string
@@ -165,5 +171,19 @@ abstract class AbstractContent {
 	 */
 	public function setImage(Image $image = NULL) {
 		$this->image = $image;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getHeadline() {
+		return $this->headline;
+	}
+
+	/**
+	 * @param string $headline
+	 */
+	public function setHeadline($headline) {
+		$this->headline = $headline;
 	}
 }
