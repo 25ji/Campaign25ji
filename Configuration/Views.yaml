@@ -1,0 +1,4 @@
+-
+  requestFilter: 'isController("Paginate") && isPackage("TYPO3.Fluid")'
+  options:
+    templateRootPathPattern: 'resource://Eco.Campaign25ji/Private/Templates'

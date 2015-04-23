@@ -17,9 +17,11 @@
 	</div>
 	<f:if condition="{portalContents}">
 		<f:then>
-				<f:for each="{portalContents}" as="portalContent">
+			<f:widget.paginate objects="{portalContents}" as="paginatedPortalContents" configuration="{itemsPerPage: 5}">
+				<f:for each="{paginatedPortalContents}" as="portalContent">
 					<f:render partial="ContentTile" arguments="{portalContent: portalContent}" />
 				</f:for>
+			</f:widget.paginate>
 		</f:then>
 	</f:if>
 </f:section>
