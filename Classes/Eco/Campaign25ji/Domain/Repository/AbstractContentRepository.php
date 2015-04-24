@@ -2,6 +2,7 @@
 namespace Eco\Campaign25ji\Domain\Repository;
 
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Persistence\QueryResultInterface;
 
 
 /**
@@ -17,8 +18,41 @@ class AbstractContentRepository extends \TYPO3\Flow\Persistence\Doctrine\Reposit
 	protected $defaultOrderings = array('postDate' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING);
 
 	/**
+	 * @param \DateTime $postedAfter
+	 * @param integer $limit
+	 * @return QueryResultInterface
+	 */
+	public function findRecentSponsorContent(\DateTime $postedAfter, $limit = 2) {
+		$query = $this->createQuery();
+
+		$query->matching(
+			$query->logicalAnd(array(
+				$query->greaterThanOrEqual('postDate', $postedAfter),
+				$query->equals('internalUser.sponsor', TRUE, TRUE)
+			))
+		)->setLimit($limit);
+
+		return $query->execute();
+	}
+
+	/**
+	 * @param array $elementsToExclude
+	 * @return QueryResultInterface
+	 */
+	public function findAllExcludingSet($elementsToExclude = array()) {
+		$query = $this->createQuery();
+		if ($elementsToExclude !== []) {
+			$queryBuilder = $query->getQueryBuilder();
+			$queryBuilder->where('e.Persistence_Object_Identifier NOT IN (:elementsToExclude)');
+			$queryBuilder->setParameter('elementsToExclude', $elementsToExclude);
+		}
+
+		return $query->execute();
+	}
+
+	/**
 	 * @param string $term
-	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
+	 * @return QueryResultInterface
 	 */
 	public function findBySearchTerm($term) {
 		$query = $this->createQuery();

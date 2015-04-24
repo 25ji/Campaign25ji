@@ -27,7 +27,9 @@ class PortalContentController extends AbstractController {
 	 */
 	public function indexAction() {
 		$this->view->assign('packery', TRUE);
-		$this->view->assign('portalContents', $this->abstractContentRepository->findAll());
+		$sponsoredContent = $this->abstractContentRepository->findRecentSponsorContent(new \DateTime('-3days'));
+		$this->view->assign('sponsorContent', $sponsoredContent);
+		$this->view->assign('portalContents', $this->abstractContentRepository->findAllExcludingSet($sponsoredContent->toArray()));
 	}
 
 	/**

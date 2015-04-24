@@ -51,7 +51,7 @@ abstract class AbstractContent {
 	/**
 	 * Relation to the user account.
 	 *
-	 * @var \TYPO3\Party\Domain\Model\AbstractParty
+	 * @var PortalUser
 	 * @ORM\ManyToOne
 	 * @ORM\JoinColumn(nullable=true)
 	 */

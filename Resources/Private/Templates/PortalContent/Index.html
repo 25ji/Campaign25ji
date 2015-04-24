@@ -15,6 +15,13 @@
 				<f:link.action action="new"><i class="fa fa-arrow-circle-right"></i>Jetzt Mitmachen</f:link.action></div>
 		</div>
 	</div>
+	<f:if condition="{sponsorContent}">
+		<f:then>
+			<f:for each="{sponsorContent}" as="portalContent">
+				<f:render partial="ContentTile" arguments="{portalContent: portalContent}" />
+			</f:for>
+		</f:then>
+	</f:if>
 	<f:if condition="{portalContents}">
 		<f:then>
 			<f:widget.paginate objects="{portalContents}" as="paginatedPortalContents" configuration="{itemsPerPage: settings.contentList.itemsPerPage}">
