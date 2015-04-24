@@ -28,6 +28,7 @@ $(document).ready(function() {
 		nextSelector : 'div.pagination a:first',
 		itemSelector : '.item',
 		bufferPx	 : 200,
+		maxPage: $('div.pagination').data('max-page'),
 		loading: {
 			finishedMsg: 'We\'re done here.',
 			//img: +templateUrl+'ajax-loader.gif'
@@ -36,6 +37,7 @@ $(document).ready(function() {
 
 	// Infinite Scroll Callback
 	function( newElements ) {
+		$('div.pagination a:first').remove();
 		var $newElems = jQuery( newElements ).hide();
 		$newElems.imagesLoaded(function(){
 			$newElems.fadeIn();
