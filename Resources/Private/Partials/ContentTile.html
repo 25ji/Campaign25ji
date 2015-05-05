@@ -1,21 +1,42 @@
 <f:if condition="{portalContent.image}">
 	<f:then>
+
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 item">
-			<div class="bg-image no-pad fg-onLight" style="background-image: url({typo3.media:uri.image(asset: portalContent.image)});">
-				{f:if(condition: portalContent.url, then: '<a href="{portalContent.url}">')}
-					<div class="overlay bottom">
-						<f:if condition="{portalContent.headline}"><h2>{portalContent.headline}</h2></f:if>
+			<f:if condition="{portalContent.internalUser.sponsor}">
+				<!-- Content with Image, User is a sponsor -->
+				<f:then>
+					<div class="bg-image no-pad fg-onLight" style="background-image: url({typo3.media:uri.image(asset: portalContent.image, maximumWidth: 420, maximumHeight: 392)});">
+						{f:if(condition: portalContent.url, then: '<a href="{portalContent.url}">')}
+						<div class="overlay bottom">
+							<f:if condition="{portalContent.headline}"><h2>{portalContent.headline}</h2></f:if>
 
-						<p class="subline">{portalContent.rawContent}</p>
+							<p class="subline">{portalContent.rawContent}</p>
 
-						<f:if condition="{portalContent.internalUser}">
-							<div class="via">{portalContent.internalUser.accounts.0.accountIdentifier}</div>
-						</f:if>
+							<f:render partial="ContentTileViaFooter" arguments="{portalContent: portalContent}" />
+						</div>
+						{f:if(condition: portalContent.url, then: '</a>')}
+
 					</div>
-				{f:if(condition: portalContent.url, then: '</a>')}
+				</f:then>
 
-				<f:render partial="ContentTileViaFooter" arguments="{portalContent: portalContent}" />
-			</div>
+
+				<!-- Content with Image, User is not a sponsor -->
+				<f:else>
+					<div class="bg-image no-content" style="background-image: url({typo3.media:uri.image(asset: portalContent.image, maximumWidth: 420, maximumHeight: 392)});">
+						<div class="bg-image triangle emo-02"></div>
+					</div>
+					<div class="bg-image emotion-02 fg-onLight">
+						{f:if(condition: portalContent.url, then: '<a href="{portalContent.url}">')}
+							<h3>{portalContent.headline}</h3>
+						{f:if(condition: portalContent.url, then: '</a>')}
+
+						<p>{portalContent.rawContent}</p>
+
+						<div class="via"></div>
+					</div>
+				</f:else>
+			</f:if>
+
 		</div>
 	</f:then>
 	<f:else>
@@ -23,9 +44,11 @@
 			<div class="{f:if(condition: '{portalContent.type} == "twitter"', then: 'bg-primary fg-onDark', else: 'emotion-01 fg-onLight')}">
 				<a href="{portalContent.url}">
 					<h3>{portalContent.headline}</h3>
-				</a>
 
-				<f:if condition="{portalContent.subheadline}"><p class="subline">{portalContent.subheadline}</p></f:if>
+					<f:if condition="{portalContent.type} == 'twitter'">
+						<p class="subline">@{portalContent.internalUser.accounts.0.accountIdentifier} <i class="fa fa-clock-o"></i>{portalContent.postDate -> f:format.date()}</p>
+					</f:if>
+				</a>
 
 				<p>{portalContent.rawContent}</p>
 
