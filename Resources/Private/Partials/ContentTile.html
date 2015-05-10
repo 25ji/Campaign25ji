@@ -46,7 +46,7 @@
 					<h3>{portalContent.headline}</h3>
 
 					<f:if condition="{portalContent.type} == 'twitter'">
-						<p class="subline">@{portalContent.internalUser.accounts.0.accountIdentifier} <i class="fa fa-clock-o"></i>{portalContent.postDate -> f:format.date()}</p>
+						<p class="subline">@{eco.campaign25ji:extractTwitterUser(statusUrl: portalContent.url)} <i class="fa fa-clock-o"></i>{portalContent.postDate -> f:format.date()}</p>
 					</f:if>
 				</a>
 
