@@ -23,9 +23,9 @@
 				<!-- Content with Image, User is not a sponsor -->
 				<f:else>
 					<div class="bg-image no-content" style="background-image: url({typo3.media:uri.image(asset: portalContent.image, maximumWidth: 420, maximumHeight: 392)});">
-						<div class="bg-image triangle emo-02"></div>
+						<div class="bg-image triangle emo-0{eco.campaign25ji:selectLayout(content: portalContent)}"></div>
 					</div>
-					<div class="bg-image emotion-02 fg-onLight">
+					<div class="bg-image emotion-0{eco.campaign25ji:selectLayout(content: portalContent)} fg-onLight">
 						{f:if(condition: portalContent.url, then: '<a href="{portalContent.url}">')}
 							<h3>{portalContent.headline}</h3>
 						{f:if(condition: portalContent.url, then: '</a>')}
@@ -41,7 +41,7 @@
 	</f:then>
 	<f:else>
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 item">
-			<div class="{f:if(condition: '{portalContent.type} == "twitter"', then: 'bg-primary fg-onDark', else: 'emotion-01 fg-onLight')}">
+			<div class="{f:if(condition: '{portalContent.type} == "twitter"', then: 'bg-primary fg-onDark', else: 'emotion-0{eco.campaign25ji:selectLayout(content: portalContent)} fg-onLight')}">
 				<a href="{portalContent.url}">
 					<h3>{portalContent.headline}</h3>
 
