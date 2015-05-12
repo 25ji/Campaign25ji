@@ -50,7 +50,7 @@
 					</f:if>
 				</a>
 
-				<p>{portalContent.rawContent}</p>
+				<p>{portalContent.rawContent -> eco.campaign25ji:twitterLinking()}</p>
 
 				<f:render partial="ContentTileViaFooter" arguments="{portalContent: portalContent}" />
 			</div>
