@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
- 
+
 	// imagesLoaded for bg images as well
 	var images = $('img');
 	$('.bg-img').each(function(){
@@ -8,11 +8,11 @@ $(document).ready(function() {
 		if(image) images = images.add($('<img>').attr('src', image.pop()));
 	});
 	images.imagesLoaded();
-	
-	
-	/*
+
+
+
 	var $container = $('#packery');
-	
+
 	// Fire packery only when images are loaded
 	$container.imagesLoaded(function(){
 		$container.packery({
@@ -23,52 +23,26 @@ $(document).ready(function() {
 	});
 
 	// Infinite Scroll
-	$('#packery').infinitescroll({
-		navSelector  : 'div.pagination', 
-		nextSelector : 'div.pagination a:first', 
-		itemSelector : '.post',
+	$container.infinitescroll({
+		navSelector  : 'div.pagination',
+		nextSelector : 'div.pagination a:first',
+		itemSelector : '.item',
 		bufferPx	 : 200,
+		maxPage: $('div.pagination').data('max-page'),
 		loading: {
 			finishedMsg: 'We\'re done here.',
 			//img: +templateUrl+'ajax-loader.gif'
 		}
 	},
-	
+
 	// Infinite Scroll Callback
 	function( newElements ) {
-		var $newElems = jQuery( newElements ).hide(); 
+		$('div.pagination a:first').remove();
+		var $newElems = jQuery( newElements ).hide();
 		$newElems.imagesLoaded(function(){
 			$newElems.fadeIn();
-			$container.isotope( 'appended', $newElems );
+			$container.append($newElems).packery('appended', $newElems);
 		});
 	});
-	*/
-});
-
- 
-docReady( function() {
-	
-	// document is ready, let's do some fun stuff!
-	var container = document.querySelector('#packery');
-	var pckry = new Packery( container,{
-		itemSelector : '.item',
-		stamp: '.stamp',
-		gutter: 0
-	});
-
-	/*
-	// document is ready, let's do some fun stuff!
-	var $container = $('#packery');
-	
-	// Fire Isotope only when images are loaded
-	$container.imagesLoaded(function(){
-		$container.packery({
-			itemSelector : '.item',
-			stamp: '.stamp',
-			gutter: 0
-		});
-	});
-	*/
-	
 
 });

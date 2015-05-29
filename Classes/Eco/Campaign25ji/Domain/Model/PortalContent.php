@@ -18,37 +18,4 @@ class PortalContent extends AbstractContent {
 	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $headline;
-
-	/**
-	 * @var string
-	 */
-	protected $subheadline;
-
-	/**
-	 * @return string
-	 */
-	public function getHeadline() {
-		return $this->headline;
-	}
-
-	/**
-	 * @param string $headline
-	 */
-	public function setHeadline($headline) {
-		$this->headline = $headline;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getSubheadline() {
-		return $this->subheadline;
-	}
-
-	/**
-	 * @param string $subheadline
-	 */
-	public function setSubheadline($subheadline) {
-		$this->subheadline = $subheadline;
-	}
 }

@@ -11,3 +11,8 @@ TYPO3:
                 '@controller': 'Standard'
                 '@action':     'welcome'
                 '@format':     'html'
+
+Eco:
+  Campaign25ji:
+    contentList:
+      itemsPerPage: 10

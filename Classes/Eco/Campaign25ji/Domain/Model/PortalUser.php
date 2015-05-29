@@ -14,10 +14,26 @@ use TYPO3\Party\Domain\Model\AbstractParty;
 class PortalUser extends AbstractParty {
 
 	/**
+	 * Logo or Avatar image.
+	 *
 	 * @var Image
 	 * @ORM\OneToOne(cascade={"all"})
 	 */
 	protected $image;
+
+	/**
+	 * Link to website (for sponsors for example)
+	 *
+	 * @var string
+	 */
+	protected $link;
+
+	/**
+	 * Is this user a sponsor of the Campaign
+	 *
+	 * @var boolean
+	 */
+	protected $sponsor = FALSE;
 
 	/**
 	 * @return Image
@@ -33,4 +49,31 @@ class PortalUser extends AbstractParty {
 		$this->image = $image;
 	}
 
+	/**
+	 * @return string
+	 */
+	public function getLink() {
+		return $this->link;
+	}
+
+	/**
+	 * @param string $link
+	 */
+	public function setLink($link) {
+		$this->link = $link;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isSponsor() {
+		return $this->sponsor;
+	}
+
+	/**
+	 * @param boolean $sponsor
+	 */
+	public function setSponsor($sponsor) {
+		$this->sponsor = $sponsor;
+	}
 }
