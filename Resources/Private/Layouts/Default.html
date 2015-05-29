@@ -62,9 +62,7 @@
 						<li>
 							<f:link.action action="about" controller="Standard">Die Aktion</f:link.action>
 						</li>
-						<li>
-							<f:link.action action="partner" controller="Standard">Partner</f:link.action>
-						</li>
+                        <!--
 						<li>
 						<f:if condition="{account}">
 							<f:then>
@@ -75,8 +73,10 @@
 							</f:else>
 						</f:if>
 						</li>
-						<li class="hidden-on-desktop"><a href="#">Kontakt</a></li>
-						<li class="hidden-on-desktop"><a href="#">Impressum</a></li>
+						-->
+						<li class="hidden-on-desktop">
+                            <f:link.action action="impress" controller="Standard">Impressum</f:link.action>
+                        </li>
 					</ul>
 				</div>
 			</div>
