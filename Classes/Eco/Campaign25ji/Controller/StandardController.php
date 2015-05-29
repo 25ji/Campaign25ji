@@ -29,4 +29,7 @@ class StandardController extends AbstractController {
 
 	}
 
+	public function impressAction() {
+
+	}
 }
