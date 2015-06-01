@@ -26,7 +26,7 @@ class PortalUser extends AbstractParty {
 	 *
 	 * @var string
 	 */
-	protected $link;
+	protected $link = '';
 
 	/**
 	 * Is this user a sponsor of the Campaign
