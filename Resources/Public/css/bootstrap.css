@@ -4,7 +4,7 @@
 /* BORDER RADIUS */
 /* BOX */
 /* BOX RGBA */
-/* BOX SHADOW 
+/* BOX SHADOW
 @mixin box-shadow($x: 2px, $y: 2px, $blur: 5px, $color: rgba(0,0,0,.4)) {
 		-webkit-box-shadow: $x $y $blur $color;
 		-moz-box-shadow:    $x $y $blur $color;
@@ -6192,10 +6192,12 @@ p.subline {
   .fg-onLight a {
     color: #293774; }
 
+.join-box {
+  padding: 20px;
+}
+
 .join {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+
   width: 100%;
   margin: 20px; }
   .join a {
