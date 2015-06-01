@@ -1,32 +1,35 @@
 {namespace media=TYPO3\Media\ViewHelpers}
-<h3>Welcome,</h3>
-<h4>{account.accountIdentifier}
-<p><f:link.action action="edit" controller="UserProfile">bearbeiten</f:link.action></p>
+<h3>Hallo,</h3>
+<p>
 <f:if condition="{user.image}">
 	<!-- remove complete div, if no image available (different css)  -->
 	<div class="user_image thumbnail">
 		<media:image asset="{user.image}" alt="{account.identifier}" />
 	</div>
 </f:if>
-<!--
+
 <div class="user_description">
 	<p>
 		<span class="label label-info">Name:</span>
-		<span>Mein Vorname und mein Nachname</span>
+		<span>{account.accountIdentifier}</span>
 	</p>
 
-	<p>
+	<!--p>
 		<span class="label label-info">Email:</span>
 		<span>fokuhilamioliba@kamasutra-nikamishi.co.uk</span>
-	</p>
+	</p-->
 
 	<p>
-		<span class="label label-info">State:</span>
-		<span>Sponsor</span>
+		<span class="label label-info">Status:</span>
+		<span>Benutzer</span>
 	</p>
 </div>
--->
+
+<f:link.action action="edit" class="btn btn-primary btn-lg btn-block" style="color: #ffffff;" controller="UserProfile">Profil bearbeiten</f:link.action><br />
+<f:link.action action="new" class="btn btn-primary btn-lg btn-block" style="color: #ffffff;">Neuer Inhalt</f:link.action><br />
+<f:link.action action="newTwitter" class="btn btn-primary btn-lg btn-block" style="color: #ffffff;">Neuer Tweet</f:link.action><br />
+
 <div class="clearfix"></div>
 <p>
-	Sonme more Content to show or instruction or whatever you want
+
 </p>
