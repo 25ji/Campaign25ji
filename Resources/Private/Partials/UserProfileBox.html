@@ -14,22 +14,25 @@
 		<span>{account.accountIdentifier}</span>
 	</p>
 
-	<!--p>
-		<span class="label label-info">Email:</span>
+	<p>
+		<span class="label label-info">Registriert seit:</span>
 		<span>fokuhilamioliba@kamasutra-nikamishi.co.uk</span>
-	</p-->
+	</p>
 
 	<p>
 		<span class="label label-info">Status:</span>
-		<span>Benutzer</span>
+		<span>
+            <f:if condition="{account.sponsor}">
+
+                <f:then><span>Sponsor</span></f:then>
+                <f:else><span>Benutzer</span></f:else>
+
+
+            </f:if>
 	</p>
 </div>
-
+<div class="clearfix"></div>
 <f:link.action action="edit" class="btn btn-primary btn-lg btn-block" style="color: #ffffff;" controller="UserProfile">Profil bearbeiten</f:link.action><br />
 <f:link.action action="new" class="btn btn-primary btn-lg btn-block" style="color: #ffffff;">Neuer Inhalt</f:link.action><br />
 <f:link.action action="newTwitter" class="btn btn-primary btn-lg btn-block" style="color: #ffffff;">Neuer Tweet</f:link.action><br />
 
-<div class="clearfix"></div>
-<p>
-
-</p>
