@@ -6116,7 +6116,7 @@ p.subline {
   .bg-image.no-content {
     min-height: 195px; }
   .bg-image .overlay {
-    min-height: 120px;
+    min-height: 140px;
     width: 100%;
     padding: 20px 60px 20px 20px;
     padding: 20px;
