@@ -6,7 +6,7 @@
 				<!-- Content with Image, User is a sponsor -->
 				<f:then>
 					<div class="bg-image no-pad fg-onLight" style="background-image: url({typo3.media:uri.image(asset: portalContent.image, maximumWidth: 420, maximumHeight: 392)});">
-						{f:if(condition: portalContent.url, then: '<a href="{portalContent.url}">')}
+						{f:if(condition: portalContent.url, then: '<a href="{portalContent.url}" target="_blank">')}
 						<div class="overlay bottom">
 							<f:if condition="{portalContent.headline}"><h2>{portalContent.headline}</h2></f:if>
 
@@ -26,7 +26,7 @@
 						<div class="bg-image triangle emo-0{eco.campaign25ji:selectLayout(content: portalContent)}"></div>
 					</div>
 					<div class="bg-image emotion-0{eco.campaign25ji:selectLayout(content: portalContent)} fg-onLight">
-						{f:if(condition: portalContent.url, then: '<a href="{portalContent.url}">')}
+						{f:if(condition: portalContent.url, then: '<a href="{portalContent.url}" target="_blank">')}
 							<h3>{portalContent.headline}</h3>
 						{f:if(condition: portalContent.url, then: '</a>')}
 
@@ -42,7 +42,7 @@
 	<f:else>
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 item">
 			<div class="{f:if(condition: '{portalContent.type} == "twitter"', then: 'bg-primary fg-onDark', else: 'emotion-0{eco.campaign25ji:selectLayout(content: portalContent)} fg-onLight')}">
-				<a href="{portalContent.url}">
+				<a href="{portalContent.url}" target="_blank">
 					<h3>{portalContent.headline}</h3>
 
 					<f:if condition="{portalContent.type} == 'twitter'">

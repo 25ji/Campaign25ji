@@ -1,6 +1,8 @@
 <?php
 namespace Eco\Campaign25ji\Controller;
 
+use Eco\Campaign25ji\Domain\Model\PortalUser;
+use Eco\Campaign25ji\Domain\Repository\PortalUserRepository;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\ActionController;
 use TYPO3\Flow\Mvc\View\ViewInterface;
@@ -25,6 +27,12 @@ abstract class AbstractController extends ActionController {
 	protected $partyService;
 
 	/**
+	 * @Flow\Inject
+	 * @var PortalUserRepository
+	 */
+	protected $portalUserRepository;
+
+	/**
 	 * If logged in the current account is available here.
 	 *
 	 * @var \TYPO3\Flow\Security\Account
@@ -43,10 +51,6 @@ abstract class AbstractController extends ActionController {
 	 */
 	public function initializeAction() {
 		$this->setAccountAndUser();
-
-		if ($this->account !== NULL && $this->user === NULL && (!($this instanceof UserProfileController) || ($this->actionMethodName !== 'editAction'  && $this->actionMethodName !== 'updateAction'))) {
-			$this->redirect('edit', 'UserProfile');
-		}
 	}
 
 	/**
@@ -59,6 +63,11 @@ abstract class AbstractController extends ActionController {
 		$view->assign('user', $this->user);
 	}
 
+	/**
+	 * Set the currently logged in account and user if any.
+	 *
+	 * @return void
+	 */
 	protected function setAccountAndUser() {
 		if ($this->account === NULL) {
 			$this->account = $this->securityContext->getAccount();
@@ -66,6 +75,13 @@ abstract class AbstractController extends ActionController {
 
 		if ($this->account !== NULL) {
 			$this->user = $this->partyService->getAssignedPartyOfAccount($this->account);
+		}
+
+		if ($this->account !== NULL && $this->user === NULL) {
+			$this->user = new PortalUser();
+			$this->portalUserRepository->add($this->user);
+			$this->persistenceManager->whitelistObject($this->user);
+			$this->partyService->assignAccountToParty($this->account, $this->user);
 		}
 	}
 }

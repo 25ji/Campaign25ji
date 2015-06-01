@@ -36,6 +36,20 @@ class AbstractContentRepository extends \TYPO3\Flow\Persistence\Doctrine\Reposit
 	}
 
 	/**
+	 * @param integer $limit
+	 * @return QueryResultInterface
+	 */
+	public function findSponsoredContent($limit = 2) {
+		$query = $this->createQuery();
+
+		$query->matching(
+			$query->equals('internalUser.sponsor', TRUE, TRUE)
+		)->setLimit($limit);
+
+		return $query->execute();
+	}
+
+	/**
 	 * @param array $elementsToExclude
 	 * @return QueryResultInterface
 	 */
