@@ -3,16 +3,30 @@
 <f:section name="Title">User Profil</f:section>
 
 <f:section name="Content">
-	<h3>{account.accountIdentifier}</h3>
+
+    <div class="col-xs-12 col-sm-12  col-md-4 col-lg-4">
+        <div class="well">
+            <f:render partial="UserProfileBox" arguments="{_all}" />
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <h2>Deine Daten bearbeiten</h2>
+
+        <p>
+            Als Sponsor wird unter Bildinhalten dein Logo / Bild und deine Url angezeigt, als normaler Benutzer
+            wollen wir einfach nur wissen wie du aussiehst:
+
+        </p>
 
 	<f:form action="update" method="POST" enctype="multipart/form-data" name="user" object="{user}">
 		<fieldset>
 			<div class="form-group">
-				<label for="image">Image</label>
+				<label for="image">Bild / Logo</label>
 				<f:form.upload class="form-control" property="image.resource" id="image" />
 			</div>
 			<div class="form-group">
-				<label for="link">Link</label>
+				<label for="link">Link (http://)</label>
 				<f:form.textfield class="form-control" property="link" id="link" />
 			</div>
 
@@ -21,4 +35,6 @@
 			</div>
 		</fieldset>
 	</f:form>
+        </div>
+
 </f:section>
