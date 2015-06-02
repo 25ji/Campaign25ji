@@ -26,7 +26,7 @@ $(document).ready(function() {
 	$container.infinitescroll({
 		navSelector  : 'div.pagination',
 		nextSelector : 'div.pagination a:first',
-		itemSelector : '.item',
+		itemSelector : '#paginated-items .item',
 		bufferPx	 : 200,
 		maxPage: $('div.pagination').data('max-page'),
 		loading: {
