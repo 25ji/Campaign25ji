@@ -4,16 +4,7 @@
 
 <f:section name="Content">
 	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 stamp pos-1">
-		<div class="bg-image fg-onLight" style="background-image: url(../../../Public/images/bg/emotion-01.jpg);">
-			<h1>HAPPY BIRTHDAY INTERNET.</h1>
-
-			<p>Dantis molent. Ehendaectus num ipicieturis es ut exerferum facius, tem re aut erciend isimet lat adit
-				facerspic te pro ommos voluptatquam qui niendanis veliquidis ame inimus volut quidis elento consere
-				entissimust, uta quassi cor restemquas modi dolorectur?</p>
-
-			<div class="join">
-				<f:link.action action="new"><i class="fa fa-arrow-circle-right"></i>Jetzt Mitmachen</f:link.action></div>
-		</div>
+		<f:render partial="JoinUsBoxContent" />
 	</div>
 	<f:if condition="{portalContents}">
 		<f:then>
@@ -21,5 +12,11 @@
 					<f:render partial="ContentTile" arguments="{portalContent: portalContent}" />
 				</f:for>
 		</f:then>
+		<f:else>
+			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+				<h1>Leider haben wir nichts gefunden.</h1>
+			</div>
+
+		</f:else>
 	</f:if>
 </f:section>

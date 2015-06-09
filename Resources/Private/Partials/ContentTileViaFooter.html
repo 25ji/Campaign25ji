@@ -1,15 +1,27 @@
-<f:if condition="{portalContent.type} == 'twitter'">
-	<f:then>
-		<div class="via"><a href="{portalContent.url}" target="_blank"><i class="fa fa-lg fa-twitter"></i></a></div>
-	</f:then>
+<div class="via">
+	<f:if condition="{portalContent.internalUser}">
+		<f:then>
+			<f:if condition="{portalContent.internalUser.account} == {account}">
+				<f:form action="delete" controller="PortalContent">
+					<f:form.hidden name="portalContent" value="{portalContent}" />
+					<button type="submit"><i class="fa fa-trash-o"></i></button>
+				</f:form>
+			</f:if>
+		</f:then>
+	</f:if>
 
-	<f:else>
-		<f:if condition="{portalContent.internalUser.sponsor}">
-			<f:then>
-				<div class="via"><a href="{portalContent.internalUser.link}" target="_blank">
-					<typo3.media:image asset="{portalContent.internalUser.image}" alt="{portalContent.internalUser.link}" maximumWidth="60" maximumHeight="30" />
-				</a></div>
-			</f:then>
-		</f:if>
-	</f:else>
-</f:if>
+	<f:if condition="{portalContent.type} == 'twitter'">
+		<f:then>
+			<a href="{portalContent.url}" target="_blank"><i class="fa fa-lg fa-twitter"></i></a>
+		</f:then>
+		<f:else>
+			<f:if condition="{portalContent.internalUser.sponsor}">
+				<f:then>
+					<a href="{portalContent.internalUser.link}" target="_blank">
+						<typo3.media:image asset="{portalContent.internalUser.image}" alt="{portalContent.internalUser.link}" maximumWidth="60" maximumHeight="30" />
+					</a>
+				</f:then>
+			</f:if>
+		</f:else>
+	</f:if>
+</div>
