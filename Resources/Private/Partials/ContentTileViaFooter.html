@@ -1,8 +1,8 @@
 <div class="via">
-	<f:if condition="{portalContent.internalUser}">
+	<f:if condition="{eco.campaign25ji:getCurrentAccount()}">
 		<f:then>
-			<f:if condition="{portalContent.internalUser.account} == {account}">
-				<f:form action="delete" controller="PortalContent">
+			<f:if condition="{portalContent.internalUser.accounts.0} == {eco.campaign25ji:getCurrentAccount()}">
+				<f:form action="delete" controller="PortalContent" method="POST">
 					<f:form.hidden name="portalContent" value="{portalContent}" />
 					<button type="submit"><i class="fa fa-trash-o"></i></button>
 				</f:form>

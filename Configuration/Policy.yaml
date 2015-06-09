@@ -13,7 +13,7 @@ privilegeTargets:
       matcher: 'method(Eco\Campaign25ji\Controller\PortalContentController->(selectType|new|newTwitter|create)Action())'
 
     'Eco.Campaign25ji:ContentModification':
-      matcher: 'method(Eco\Campaign25ji\Controller\PortalContentController->(edit|update|delete)Action(portalContent.internalUser == current.securityContext.account.party))'
+      matcher: 'method(Eco\Campaign25ji\Controller\PortalContentController->(edit|update|delete)Action(portalContent.internalUser.accounts.0 == current.securityContext.account))'
 
 roles:
   'Eco.Campaign25ji:User':

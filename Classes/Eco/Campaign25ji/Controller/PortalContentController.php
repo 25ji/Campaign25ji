@@ -89,28 +89,28 @@ class PortalContentController extends AbstractController {
 	}
 
 	/**
-	 * @param \Eco\Campaign25ji\Domain\Model\PortalContent $portalContent
+	 * @param AbstractContent $portalContent
 	 * @return void
 	 */
-	public function editAction(PortalContent $portalContent) {
+	public function editAction(AbstractContent $portalContent) {
 		$this->view->assign('portalContent', $portalContent);
 	}
 
 	/**
-	 * @param \Eco\Campaign25ji\Domain\Model\PortalContent $portalContent
+	 * @param AbstractContent $portalContent
 	 * @return void
 	 */
-	public function updateAction(PortalContent $portalContent) {
+	public function updateAction(AbstractContent $portalContent) {
 		$this->abstractContentRepository->update($portalContent);
 		$this->addFlashMessage('Updated the portal content.');
 		$this->redirect('index');
 	}
 
 	/**
-	 * @param \Eco\Campaign25ji\Domain\Model\PortalContent $portalContent
+	 * @param AbstractContent $portalContent
 	 * @return void
 	 */
-	public function deleteAction(PortalContent $portalContent) {
+	public function deleteAction(AbstractContent $portalContent) {
 		$this->abstractContentRepository->remove($portalContent);
 		$this->addFlashMessage('Deleted a portal content.');
 		$this->redirect('index');

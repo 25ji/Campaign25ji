@@ -12,7 +12,7 @@
 
 							<p class="subline">{portalContent.rawContent}</p>
 
-							<f:render partial="ContentTileViaFooter" arguments="{portalContent: portalContent, user: user}" />
+							<f:render partial="ContentTileViaFooter" arguments="{portalContent: portalContent}" />
 						</div>
 						{f:if(condition: portalContent.url, then: '</a>')}
 
@@ -52,7 +52,7 @@
 
 				<p>{portalContent.rawContent -> eco.campaign25ji:twitterLinking()}</p>
 
-				<f:render partial="ContentTileViaFooter" arguments="{portalContent: portalContent, user: user}" />
+				<f:render partial="ContentTileViaFooter" arguments="{portalContent: portalContent}" />
 			</div>
 		</div>
 	</f:else>
