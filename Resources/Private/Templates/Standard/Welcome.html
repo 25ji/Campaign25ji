@@ -3,18 +3,20 @@
 
 <f:section name="Content">
 
-
+    <div class="hidden-xs hidden-sm col-md-4 col-lg-4">
+        <f:render partial="JoinUsBoxContent" />
+    </div>
 
 	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 
         <h1>Einloggen und mitmachen</h1>
         <p>
-            Wir wollen unter <strong>#25JahreInternet</strong> Geschichten sammeln. Was waren eure besonderen Momente im und mit dem Internet?
-            Loggt euch ein mit eurem Twitter Account und seit dabei. Mit eurem Login könnt Ihr Inhalte mit bildern Titeln und Untertiteln direkt auf unserer Seite posten.
-            Alternativ nutzt auf Twitter einfach das Hashtag <strong>#25JahreInternet</strong> - wir sammeln eure Daten dann ein.
+            Wir wollen unter #25JahreInternet eure Geschichten sammeln. Loggt euch einfach mit eurem Twitter Account ein und seid dabei!
+            Was waren eure besonderen Momente im und mit dem Internet? Postet Inhalte mit Bildern, Titeln und Untertiteln auf unserer Seite. Oder benutzt direkt über Twitter das Hashtag <strong>#25JahreInternet</strong>!
+
         </p>
 
-        <h2>Jetzt über Twitter einloggen</h2>
+
         <div style="max-width: 400px; margin: 0 auto 10px;">
             <f:form action="login" controller="Authentication" package="Flowpack.TwitterApi">
                 <button class="btn btn-primary btn-lg btn-block twitter-bg-color"><i class="fa fa-twitter"></i>
