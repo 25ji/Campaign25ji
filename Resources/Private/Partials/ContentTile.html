@@ -5,7 +5,7 @@
 			<f:if condition="{portalContent.internalUser.sponsor}">
 				<!-- Content with Image, User is a sponsor -->
 				<f:then>
-					<div class="bg-image no-pad fg-onLight" style="background-image: url({typo3.media:uri.image(asset: portalContent.image, maximumWidth: 420, maximumHeight: 392)});">
+					<div class="bg-image no-pad fg-onLight" style="background-image: url('{typo3.media:uri.image(asset: portalContent.image, maximumWidth: 420, maximumHeight: 392)}');">
 						{f:if(condition: portalContent.url, then: '<a href="{portalContent.url}" target="_blank">')}
 						<div class="overlay bottom">
 							<f:if condition="{portalContent.headline}"><h2>{portalContent.headline}</h2></f:if>
@@ -22,7 +22,7 @@
 
 				<!-- Content with Image, User is not a sponsor -->
 				<f:else>
-					<div class="bg-image no-content" style="background-image: url({typo3.media:uri.image(asset: portalContent.image, maximumWidth: 420, maximumHeight: 392)});">
+					<div class="bg-image no-content" style="background-image: url('{typo3.media:uri.image(asset: portalContent.image, maximumWidth: 420, maximumHeight: 392)}');">
 						<div class="bg-image triangle emo-0{eco.campaign25ji:selectLayout(content: portalContent)}"></div>
 					</div>
 					<div class="bg-image emotion-0{eco.campaign25ji:selectLayout(content: portalContent)} fg-onLight">
